@@ -29,11 +29,11 @@ Kassi::Application.configure do
   elsif APP_CONFIG.mail_delivery_method == "smtp"
     # Enable sending mail from localhost
     ActionMailer::Base.smtp_settings = {
-      :address              => APP_CONFIG.smtp_email_address,
-      :port                 => APP_CONFIG.smtp_email_port,
-      :domain               => APP_CONFIG.smtp_email_domain || 'localhost',
-      :user_name            => APP_CONFIG.smtp_email_user_name,
-      :password             => APP_CONFIG.smtp_email_password,
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "gmail.com",
+      :user_name            => ENV["GMAIL_LOGIN"],
+      :password             => ENV["GMAIL_PASSWORD"],
       :authentication       => 'plain',
       :enable_starttls_auto => true
     }

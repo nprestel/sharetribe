@@ -19,7 +19,7 @@ default: &default_settings
   #
   # Example value: http://mydomain.com
   #
-  community_not_found_redirect:
+  community_not_found_redirect: http://www.lajek.com/
 
   # Login url. This can be a separate address for loggin in. For example
   # a subdomain with https. It's recommended to use https here, so passwords
@@ -80,15 +80,15 @@ default: &default_settings
 
   # Facebook Connect
   # If you want to use Facebook connect, enter the credentials here
-  fb_connect_id:
-  fb_connect_secret:
+  fb_connect_id: "744116852363042"
+  fb_connect_secret: "18869e727dac5a1c7f4a89d3a2bae008"
 
   # reCAPTChA is used to avoid bots registering accounts
   # You need to register your domain at https://www.google.com/recaptcha
   # to get the keys
   use_recaptcha: false
-  recaptcha_public_key: 'enter_your_own_key_here'
-  recaptcha_private_key: 'enter_your_own_key_here'
+  recaptcha_public_key: '6Lcd9wATAAAAAHEsjvh_FgM00kjoqIDVGt6XRBoP'
+  recaptcha_private_key: '6Lcd9wATAAAAAONp4YnwbX0OS2bx1v8ImLpYKmjz'
 
   # You can use Airbrake to track errors if you want.
   # You need to register an account and get an API key from airbrake.io
@@ -113,10 +113,10 @@ default: &default_settings
   # postmark_api_key:
 
   # This will be the from field in the mails sent from Sharetribe
-  sharetribe_mail_from_address: "your-team@example.com"
+  sharetribe_mail_from_address: "nick@lajek.com"
 
   # The address where the notifications of feedbacks from Sharetribe UI are sent
-  feedback_mailer_recipients:  'admins@example.com'
+  feedback_mailer_recipients:  'nick@lajek.com'
 
   grid_listings_limit: 24
   map_listings_limit: 150
@@ -182,7 +182,7 @@ default: &default_settings
 
   # The default consent (terms of use) all the communities will use.
   # It's just a string that tells the version of the consent.
-  consent: "SHARETRIBE1.0"
+  consent: "LAJEK1.0"
 
   # If you need to turn off the service for a while (so that people can't modify data)
   # you can show the maintenance page on every pageload by turning on the following
@@ -218,7 +218,7 @@ default: &default_settings
   support_email: support@example.com
 
   # Knowledge base URL
-  knowledge_base_url: http://www.example.com/knowledgebase
+  knowledge_base_url: http://www.lajek.com/knowledgebase
 
 production: &production_settings
   <<: *default_settings
@@ -268,8 +268,8 @@ test:
   #"http://login.lvh.me:9887"
 
   # Facebook Connect dummy credentials for tests
-  fb_connect_id: "123456789012345"
-  fb_connect_secret: "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456"
+  # fb_connect_id: "123456789012345"
+  # fb_connect_secret: "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456"
 
   # normally no point of submiting events from tests to Kissmetrics
   use_kissmetrics: false
