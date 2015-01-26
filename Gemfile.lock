@@ -348,8 +348,6 @@ GEM
       activesupport (= 3.2.19)
       bundler (~> 1.0)
       railties (= 3.2.19)
-    rails-i18n (0.7.2)
-      i18n (~> 0.5)
     railties (3.2.19)
       actionpack (= 3.2.19)
       activesupport (= 3.2.19)
@@ -541,7 +539,6 @@ DEPENDENCIES
   rack-test
   rack-timeout
   rails (= 3.2.19)
-  rails-i18n
   rake
   rb-fsevent
   recaptcha

@@ -2056,7 +2056,9 @@ figure.fluidratio {
 
   p {
     margin-top: lines(0.5);
-    color: $background;
+    font-size: 1.3em;
+    color: #767676;
+    max-width: 16em;
     @include normal-type;
     font-weight: 500;
     @include text-shadow(2px, 2px, 3px, rgba(black, 0.5));
@@ -2073,6 +2075,7 @@ figure.fluidratio {
     vertical-align: top;
     padding: em(11) em(11) em(11) em(11);
     width: 100%;
+	background-color:#f6f6f6;
   }
 
   button.action-button {
@@ -2139,6 +2142,7 @@ figure.fluidratio {
       margin-top: 0;
       @include huge-type;
       line-height: em(13);
+	  color:#767676;
     }
 
     p {
