@@ -2070,7 +2070,6 @@ figure.fluidratio {
   input[type=text] {
     @include normal-type;
     padding: 0;
-    border: 0;
     margin: 0;
     vertical-align: top;
     padding: em(11) em(11) em(11) em(11);
@@ -2143,6 +2142,11 @@ figure.fluidratio {
       @include huge-type;
       line-height: em(13);
 	  color:#767676;
+    }
+
+    .marketplace-lander-content-title2 {
+      font-size: 1.3em;
+      color:#767676;
     }
 
     p {

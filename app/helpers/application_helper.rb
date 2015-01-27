@@ -181,7 +181,7 @@ module ApplicationHelper
       "user" => "icon-user",
       "settings" => " icon-cog",
       "facebook" => "icon-facebook",
-      "invite" => "icon-users",
+      "invite" => "user-plus",
 
       "information" => "icon-info-sign",
       "alert" => "icon-warning-sign",
