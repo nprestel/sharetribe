@@ -158,14 +158,21 @@ module ApplicationHelper
       "map" => "icon-map-marker",
       "thumbnails" => "icon-th",
       "new_listing" => "icon-plus-sign-alt",
+      "account_settings" => "icon-lock",
+      "coins" => "icon-tasks",
+      "link" => "icon-link",
+      "form" => "icon-list-alt",
+      "social_media" => "icon-cogs",
 
       "search"  => "icon-search",
-      "list" => "icon-reorder",
+      "list" => "icon-list",
+      "grid" => "icon-th-large",
 
       "home" => "icon-home",
       "community" =>"icon-group",
       "help" => "icon-question-sign",
       "admin" => "icon-wrench",
+      "openbook" => "icon-book",
 
       "directup" => "icon-sort-up",
       "directdown" => "icon-sort-down",
@@ -175,19 +182,22 @@ module ApplicationHelper
       "redirect" => "icon-share",
       "mail" => "icon-envelope",
       "notifications" => "icon-globe",
+      "notification_settings" => "icon-bell",
       "login" => "icon-signin",
       "logout" => "icon-signout",
       "feedback" => "icon-bullhorn",
       "user" => "icon-user",
       "settings" => " icon-cog",
       "facebook" => "icon-facebook",
-      "invite" => "user-plus",
+      "invite" => "icon-plus",
+      "send" => "icon-share-alt",
 
       "information" => "icon-info-sign",
       "alert" => "icon-warning-sign",
       "how_to_use" => "icon-book",
       "privacy" => "icon-lock",
       "terms" => "icon-file-alt",
+      "analytics" => "icon-bar-chart",
 
       "offer" => "icon-share",
       "request" => "icon-lightbulb",
@@ -222,7 +232,7 @@ module ApplicationHelper
       "rent" => "icon-money",
       "rent_out" => "icon-money",
       "job" => "icon-briefcase",
-
+      "profile" => "icon-file-alt",
       "testimonial" => "icon-star",
       "star" => "icon-star",
       "like" => "icon-thumbs-up",
@@ -249,7 +259,7 @@ module ApplicationHelper
   def icon_class(icon_name)
     icon = ICONS[ICON_PACK][icon_name]
     if icon.nil?
-      icon = (ICON_PACK == "font-awesome" ? "icon-circle-blank" : "ss-record")
+      icon = (ICON_PACK == "font-awesome" ? "icon-reorder" : "ss-record")
     end
     return icon
   end
@@ -582,7 +592,7 @@ module ApplicationHelper
       },
       {
         :text => t("admin.communities.edit_details.invite_people"),
-        :icon_class => "ss-adduser",
+        :icon_class => "icon-plus",
         :path => new_invitation_path,
         :name => "invite_people"
       },
@@ -594,13 +604,13 @@ module ApplicationHelper
       },
       {
         :text => t("admin.communities.edit_details.community_details"),
-        :icon_class => "ss-page",
+        :icon_class => "icon-file",
         :path => edit_details_admin_community_path(@current_community),
         :name => "tribe_details"
       },
       {
         :text => t("admin.communities.edit_details.community_look_and_feel"),
-        :icon_class => "ss-paintroller",
+        :icon_class => "icon-picture",
         :path => edit_look_and_feel_admin_community_path(@current_community),
         :name => "tribe_look_and_feel"
       },
