@@ -3,6 +3,11 @@
 
 - content_for :title_header do
   %h1
+    - if @person.is_shipper_carrier == "carrier"
+      %i.icon-truck
+    - elsif @person.is_shipper_carrier == "shipper"
+      %i.icon-suitcase
+    - else
     %span.profile-title= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "")
 
 .row

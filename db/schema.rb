@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150128232825) do
+ActiveRecord::Schema.define(:version => 20150129213927) do
 
   create_table "auth_tokens", :force => true do |t|
     t.string   "token"
@@ -60,6 +60,42 @@ ActiveRecord::Schema.define(:version => 20150128232825) do
     t.string   "hidden_account_number"
     t.string   "status"
     t.integer  "community_id"
+  end
+
+  create_table "carrier_averages", :force => true do |t|
+    t.decimal  "vehicle",    :precision => 10, :scale => 2
+    t.decimal  "driver",     :precision => 10, :scale => 2
+    t.decimal  "hazmat",     :precision => 10, :scale => 2
+    t.string   "timeframe"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "carrier_data", :force => true do |t|
+    t.string   "auth_number"
+    t.string   "usdot_number"
+    t.string   "legal_name"
+    t.string   "dba_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "trucks"
+    t.integer  "drivers"
+    t.string   "rating"
+    t.date     "rate_date"
+    t.integer  "inspections"
+    t.integer  "crashes"
+    t.decimal  "vehicle_oos_rate", :precision => 10, :scale => 0
+    t.decimal  "driver_oos_rate",  :precision => 10, :scale => 0
+    t.decimal  "hazmat_oos_rate",  :precision => 10, :scale => 0
+    t.boolean  "property"
+    t.boolean  "passenger"
+    t.boolean  "household_goods"
+    t.boolean  "broker"
+    t.boolean  "validated"
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   create_table "categories", :force => true do |t|
