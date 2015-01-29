@@ -39,6 +39,7 @@
 #  is_organization                    :boolean
 #  organization_name                  :string(255)
 #  deleted                            :boolean          default(FALSE)
+#  is_shipper_carrier                 :string(255)
 #
 # Indexes
 #

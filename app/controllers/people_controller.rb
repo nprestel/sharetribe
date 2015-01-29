@@ -38,7 +38,7 @@ class PeopleController < Devise::RegistrationsController
     session[:invitation_code] = params[:code] if params[:code]
 
     @person = if params[:person] then
-      Person.new(params[:person].slice(:given_name, :family_name, :email, :username))
+      Person.new(params[:person].slice(:given_name, :family_name, :email, :username, :is_shipper_carrier))
     else
       Person.new()
     end

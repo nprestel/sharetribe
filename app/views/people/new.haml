@@ -26,6 +26,16 @@
 
   = form_for @person, :url => APP_CONFIG.login_domain.to_s + people_path do |form|
 
+    -# Shipper or Carrier
+    = form.label :terms, t('.is_carrier_or_shipper'), :class => "radio"
+    .btn-group{"data-toggle" => "buttons"}
+      %label.btn.btn-default
+        %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :value => "shipper", :class => "radio"}
+        Shipper
+      %label.btn.btn-default
+        %input{:type => "radio", :id => "is_carrier", :name => "person[is_shipper_carrier]", :value => "carrier", :class => "radio"}
+        Carrier
+
     -# Invite code
     - if @current_community.join_with_invite_only?
       .inline-label-container
@@ -41,7 +51,7 @@
 
     -# Email
     = form.label :email, t('.email')
-    = form.text_field :email, :class => :text_field, :maxlenght => "255"
+    = form.text_field :email, :class => :text_field, :maxlength => "255"
 
     -# Name
     - if @current_community.only_organizations

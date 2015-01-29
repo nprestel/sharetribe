@@ -39,6 +39,7 @@
 #  is_organization                    :boolean
 #  organization_name                  :string(255)
 #  deleted                            :boolean          default(FALSE)
+#  is_shipper_carrier                 :string(255)
 #
 # Indexes
 #
@@ -76,7 +77,7 @@ class Person < ActiveRecord::Base
 
   # Setup accessible attributes for your model (the rest are protected)
   attr_accessible :username, :password, :password2, :password_confirmation,
-                  :remember_me, :consent, :login
+                  :remember_me, :consent, :login, :is_shipper_carrier
 
   attr_accessor :guid, :password2, :form_login,
                 :form_given_name, :form_family_name, :form_password,
@@ -158,7 +159,8 @@ class Person < ActiveRecord::Base
   validates_length_of :username, :within => 3..20
   validates_length_of :given_name, :within => 1..255, :allow_nil => true, :allow_blank => true
   validates_length_of :family_name, :within => 1..255, :allow_nil => true, :allow_blank => true
-
+  validates_inclusion_of :is_shipper_carrier, :in => %w(carrier shipper)
+  
   validates_format_of :username,
                        :with => /\A[A-Z0-9_]*\z/i
 

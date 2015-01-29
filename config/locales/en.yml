@@ -1550,6 +1550,7 @@ en:
       family_name: "Last name"
       given_name: "First name"
       i_accept_the: "I accept the"
+      is_carrier_or_shipper: "Are you a Shipper or Carrier?"
       invalid_invitation_code: "The invitation code is not valid."
       invitation_code: "Invitation code"
       not_required: ", not required"
