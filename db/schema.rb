@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150129213927) do
+ActiveRecord::Schema.define(:version => 20150201203612) do
 
   create_table "auth_tokens", :force => true do |t|
     t.string   "token"
@@ -72,8 +72,9 @@ ActiveRecord::Schema.define(:version => 20150129213927) do
   end
 
   create_table "carrier_data", :force => true do |t|
-    t.string   "auth_number"
+    t.string   "auth_number",                                     :default => "", :null => false
     t.string   "usdot_number"
+    t.boolean  "validated"
     t.string   "legal_name"
     t.string   "dba_name"
     t.string   "address"
@@ -93,9 +94,8 @@ ActiveRecord::Schema.define(:version => 20150129213927) do
     t.boolean  "passenger"
     t.boolean  "household_goods"
     t.boolean  "broker"
-    t.boolean  "validated"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -862,6 +862,7 @@ ActiveRecord::Schema.define(:version => 20150129213927) do
     t.string   "organization_name"
     t.boolean  "deleted",                                          :default => false
     t.string   "is_shipper_carrier"
+    t.integer  "carrier_data_id"
   end
 
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true

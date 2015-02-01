@@ -40,6 +40,7 @@
 #  organization_name                  :string(255)
 #  deleted                            :boolean          default(FALSE)
 #  is_shipper_carrier                 :string(255)
+#  carrier_data_id                    :integer
 #
 # Indexes
 #

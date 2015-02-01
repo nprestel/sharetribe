@@ -29,12 +29,8 @@
     -# Shipper or Carrier
     = form.label :terms, t('.is_carrier_or_shipper'), :class => "radio"
     .btn-group{"data-toggle" => "buttons"}
-      %label.btn.btn-default
-        %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :value => "shipper", :class => "radio"}
-        Shipper
-      %label.btn.btn-default
-        %input{:type => "radio", :id => "is_carrier", :name => "person[is_shipper_carrier]", :value => "carrier", :class => "radio"}
-        Carrier
+      %input{:type => "button", :id => "is_shipper", :name => "person[is_shipper_carrier]", :value => "Shipper", :class => "btn-default"}
+      %input{:type => "button", :id => "is_carrier", :name => "person[is_shipper_carrier]", :value => "Carrier", :class => "btn-default"}
 
     -# Invite code
     - if @current_community.join_with_invite_only?

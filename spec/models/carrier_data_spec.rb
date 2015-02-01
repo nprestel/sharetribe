@@ -3,8 +3,9 @@
 # Table name: carrier_data
 #
 #  id               :integer          not null, primary key
-#  auth_number      :string(255)
+#  auth_number      :string(255)      default(""), not null
 #  usdot_number     :string(255)
+#  validated        :boolean
 #  legal_name       :string(255)
 #  dba_name         :string(255)
 #  address          :string(255)
@@ -24,7 +25,6 @@
 #  passenger        :boolean
 #  household_goods  :boolean
 #  broker           :boolean
-#  validated        :boolean
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

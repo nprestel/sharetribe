@@ -40,6 +40,7 @@
 #  organization_name                  :string(255)
 #  deleted                            :boolean          default(FALSE)
 #  is_shipper_carrier                 :string(255)
+#  carrier_data_id                    :integer
 #
 # Indexes
 #
@@ -115,6 +116,8 @@ class Person < ActiveRecord::Base
   has_many :followed_people, :through => :inverse_follower_relationships, :source => "person"
 
   has_and_belongs_to_many :followed_listings, :class_name => "Listing", :join_table => "listing_followers"
+  
+  belongs_to :carrier_data, inverse_of: :person
 
   def to_param
     username
