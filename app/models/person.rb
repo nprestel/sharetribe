@@ -162,7 +162,9 @@ class Person < ActiveRecord::Base
   validates_length_of :username, :within => 3..20
   validates_length_of :given_name, :within => 1..255, :allow_nil => true, :allow_blank => true
   validates_length_of :family_name, :within => 1..255, :allow_nil => true, :allow_blank => true
-  # validates_inclusion_of :is_shipper_carrier, :in => %w(carrier shipper)
+  # validates_inclusion_of :is_shipper_carrier.downcase, :in => %w(carrier shipper)
+  validates_length_of :carrier_data_id, :minimum => 8, :maximum => 8
+  # validates_inclusion_of :carrier_data_id, :in => %w(MC mc Mc mC), :allow_blank => true
   
   validates_format_of :username,
                        :with => /\A[A-Z0-9_]*\z/i

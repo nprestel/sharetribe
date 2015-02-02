@@ -32,5 +32,8 @@ class CarrierData < ActiveRecord::Base
   
   has_many :people, :autosave => true, :dependent => :destroy
   
+  validates_length_of :id, :minimum => 8, :maximum => 8
+  validates_inclusion_of :id, :in => %w(MC mc Mc mC)
+  
   attr_accessible :address, :auth_number, :broker, :city, :crashes, :dba_name, :driver_oos_rate, :drivers, :hazmat_oos_rate, :household_goods, :inspections, :legal_name, :passenger, :property, :rate_date, :rating, :state, :trucks, :usdot_number, :validated, :vehicle_oos_rate, :zip
 end

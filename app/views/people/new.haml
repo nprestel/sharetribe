@@ -34,7 +34,7 @@
 
     -# Carrier Operating Authority Number
     = form.label :op_authority_number, t('.op_authority_number')
-    = form.text_field :carrier_auth_number, :class => :text_field, :maxlength => "255"
+    = form.text_field :carrier_data_id, :class => :text_field, :title => "This is a 6 digit number beginning with 'MC'", :maxlength => "8", :minlength => "8", :placeholder => "MC"
 
     -# Invite code
     - if @current_community.join_with_invite_only?
@@ -47,7 +47,7 @@
 
     -# Honey pot: hidden field to detect spammers
     = form.label :input_again, "You should not see this field, if CSS is working. If you see this, please send feedback!", :class => "unwanted_text_field"
-    = form.text_field :input_again, :class => "unwanted_text_field", :id => "error_regristration_unwanted_email2", :autocomplete => "off"
+    = form.text_field :input_again, :class => "unwanted_text_field", :id => "error_registration_unwanted_email2", :autocomplete => "off"
 
     -# Email
     = form.label :email, t('.email')
