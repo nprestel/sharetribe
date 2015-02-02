@@ -3,12 +3,16 @@
 
 - content_for :title_header do
   %h1
-    - if @person.is_shipper_carrier == "carrier"
+    - if @person.is_shipper_carrier.downcase == "carrier"
       %i.icon-truck
-    - elsif @person.is_shipper_carrier == "shipper"
+      %span.profile-title= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "")
+      - if @person.carrier_data.validated == true
+        %h1(style='text-align:right;')
+          %i.icon-star-empty
+          %span.profile-title="VALIDATED!"
+    - elsif @person.is_shipper_carrier.downcase == "shipper"
       %i.icon-suitcase
-    - else
-    %span.profile-title= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "")
+      %span.profile-title= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "")
 
 .row
   .col-8

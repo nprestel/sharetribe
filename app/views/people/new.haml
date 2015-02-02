@@ -27,10 +27,14 @@
   = form_for @person, :url => APP_CONFIG.login_domain.to_s + people_path do |form|
 
     -# Shipper or Carrier
-    = form.label :terms, t('.is_carrier_or_shipper'), :class => "radio"
-    .btn-group{"data-toggle" => "buttons"}
-      %input{:type => "button", :id => "is_shipper", :name => "person[is_shipper_carrier]", :value => "Shipper", :class => "btn-default"}
-      %input{:type => "button", :id => "is_carrier", :name => "person[is_shipper_carrier]", :value => "Carrier", :class => "btn-default"}
+    = form.label :terms, t('.is_carrier_or_shipper'), :class => "btn btn-default"
+    .btn-group{"data-toggle" => "buttons-radio"}
+      %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :value => "Shipper", :class => "btn btn-primary"} Shipper
+      %input{:type => "radio", :id => "is_carrier", :name => "person[is_shipper_carrier]", :value => "Carrier", :class => "btn btn-primary"} Carrier
+
+    -# Carrier Operating Authority Number
+    = form.label :op_authority_number, t('.op_authority_number')
+    = form.text_field :carrier_auth_number, :class => :text_field, :maxlength => "255"
 
     -# Invite code
     - if @current_community.join_with_invite_only?

@@ -3,6 +3,7 @@
 # Table name: people
 #
 #  id                                 :string(22)       not null, primary key
+#  carrier_data_id                    :text
 #  created_at                         :datetime
 #  updated_at                         :datetime
 #  is_admin                           :integer          default(0)
@@ -40,7 +41,6 @@
 #  organization_name                  :string(255)
 #  deleted                            :boolean          default(FALSE)
 #  is_shipper_carrier                 :string(255)
-#  carrier_data_id                    :integer
 #
 # Indexes
 #
@@ -117,7 +117,7 @@ class Person < ActiveRecord::Base
 
   has_and_belongs_to_many :followed_listings, :class_name => "Listing", :join_table => "listing_followers"
   
-  belongs_to :carrier_data, inverse_of: :person
+  belongs_to :carrier_data
 
   def to_param
     username
@@ -162,7 +162,7 @@ class Person < ActiveRecord::Base
   validates_length_of :username, :within => 3..20
   validates_length_of :given_name, :within => 1..255, :allow_nil => true, :allow_blank => true
   validates_length_of :family_name, :within => 1..255, :allow_nil => true, :allow_blank => true
-  validates_inclusion_of :is_shipper_carrier, :in => %w(carrier shipper)
+  # validates_inclusion_of :is_shipper_carrier, :in => %w(carrier shipper)
   
   validates_format_of :username,
                        :with => /\A[A-Z0-9_]*\z/i

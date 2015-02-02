@@ -3,6 +3,7 @@
 # Table name: people
 #
 #  id                                 :string(22)       not null, primary key
+#  carrier_data_id                    :text
 #  created_at                         :datetime
 #  updated_at                         :datetime
 #  is_admin                           :integer          default(0)
@@ -40,7 +41,6 @@
 #  organization_name                  :string(255)
 #  deleted                            :boolean          default(FALSE)
 #  is_shipper_carrier                 :string(255)
-#  carrier_data_id                    :integer
 #
 # Indexes
 #

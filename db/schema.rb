@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150201203612) do
+ActiveRecord::Schema.define(:version => 20150202141158) do
 
   create_table "auth_tokens", :force => true do |t|
     t.string   "token"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20150201203612) do
   end
 
   create_table "carrier_data", :force => true do |t|
-    t.string   "auth_number",                                     :default => "", :null => false
     t.string   "usdot_number"
     t.boolean  "validated"
     t.string   "legal_name"
@@ -94,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20150201203612) do
     t.boolean  "passenger"
     t.boolean  "household_goods"
     t.boolean  "broker"
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -823,24 +822,24 @@ ActiveRecord::Schema.define(:version => 20150201203612) do
   add_index "paypal_tokens", ["token"], :name => "index_paypal_tokens_on_token", :unique => true
   add_index "paypal_tokens", ["transaction_id"], :name => "index_paypal_tokens_on_transaction_id"
 
-  create_table "people", :id => false, :force => true do |t|
-    t.string   "id",                                 :limit => 22,                    :null => false
+  create_table "people", :force => true do |t|
+    t.text     "carrier_data_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "is_admin",                                         :default => 0
-    t.string   "locale",                                           :default => "fi"
+    t.integer  "is_admin",                           :default => 0
+    t.string   "locale",                             :default => "fi"
     t.text     "preferences"
-    t.integer  "active_days_count",                                :default => 0
+    t.integer  "active_days_count",                  :default => 0
     t.datetime "last_page_load_date"
-    t.integer  "test_group_number",                                :default => 1
-    t.boolean  "active",                                           :default => true
+    t.integer  "test_group_number",                  :default => 1
+    t.boolean  "active",                             :default => true
     t.string   "username"
     t.string   "email"
-    t.string   "encrypted_password",                               :default => "",    :null => false
+    t.string   "encrypted_password",                 :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                    :default => 0
+    t.integer  "sign_in_count",                      :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -857,12 +856,11 @@ ActiveRecord::Schema.define(:version => 20150201203612) do
     t.string   "facebook_id"
     t.string   "authentication_token"
     t.datetime "community_updates_last_sent_at"
-    t.integer  "min_days_between_community_updates",               :default => 1
+    t.integer  "min_days_between_community_updates", :default => 1
     t.boolean  "is_organization"
     t.string   "organization_name"
-    t.boolean  "deleted",                                          :default => false
+    t.boolean  "deleted",                            :default => false
     t.string   "is_shipper_carrier"
-    t.integer  "carrier_data_id"
   end
 
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true

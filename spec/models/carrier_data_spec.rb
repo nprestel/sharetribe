@@ -2,8 +2,7 @@
 #
 # Table name: carrier_data
 #
-#  id               :integer          not null, primary key
-#  auth_number      :string(255)      default(""), not null
+#  id               :string(255)      default(""), not null, primary key
 #  usdot_number     :string(255)
 #  validated        :boolean
 #  legal_name       :string(255)
