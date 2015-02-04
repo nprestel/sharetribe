@@ -35,6 +35,8 @@ gem 'paperclip'
 gem 'delayed_paperclip'
 gem 'aws-sdk'
 gem "will_paginate"
+gem 'simple_form'
+gem 'client_side_validations'
 gem 'dalli'
 gem "memcachier"
 gem 'kgio', "~>2.8.0"

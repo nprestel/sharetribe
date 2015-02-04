@@ -78,7 +78,7 @@ class PeopleController < Devise::RegistrationsController
       flash[:error] = t("people.new.email_is_in_use")
       redirect_to error_redirect_path and return
     end
-
+    
     # Check that the email is allowed for current community
     if @current_community && ! @current_community.email_allowed?(params[:person][:email])
       flash[:error] = t("people.new.email_not_allowed")

@@ -886,6 +886,8 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     errorPlacement: function(error, element) {
       if (element.attr("name") == "person[terms]") {
         error.appendTo(element.parent().parent());
+      } else if (element.attr("name") == "person[is_shipper_carrier]") {
+        error.appendTo(element.parent());
       } else if (element.attr("name") == "recaptcha_response_field") {
         error.appendTo(element.parent().parent().parent().parent().parent().parent().parent().parent().parent());
       } else {
@@ -901,7 +903,8 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
       "person[password]": { required: true, minlength: 4 },
       "person[password2]": { required: true, minlength: 4, equalTo: "#person_password1" },
       "recaptcha_response_field": {required: true, captcha: true },
-      "invitation_code": {required: invitation_required, remote: "/people/check_invitation_code"}
+      "invitation_code": {required: invitation_required, remote: "/people/check_invitation_code"},
+      "person[is_shipper_carrier]": {required: true },
     },
     messages: {
       "recaptcha_response_field": { captcha: captcha_message },

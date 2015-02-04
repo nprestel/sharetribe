@@ -117,7 +117,9 @@ class Person < ActiveRecord::Base
 
   has_and_belongs_to_many :followed_listings, :class_name => "Listing", :join_table => "listing_followers"
   
+  # ADDED BY NICK
   belongs_to :carrier_data
+  # ADDED BY NICK
 
   def to_param
     username
@@ -156,23 +158,21 @@ class Person < ActiveRecord::Base
   PERSONAL_EMAIL_ENDINGS = ["gmail.com", "hotmail.com", "yahoo.com"]
 
   serialize :preferences
-
-#  validates_uniqueness_of :username
   validates_length_of :phone_number, :maximum => 25, :allow_nil => true, :allow_blank => true
   validates_length_of :username, :within => 3..20
   validates_length_of :given_name, :within => 1..255, :allow_nil => true, :allow_blank => true
   validates_length_of :family_name, :within => 1..255, :allow_nil => true, :allow_blank => true
-  # validates_inclusion_of :is_shipper_carrier.downcase, :in => %w(carrier shipper)
-  validates_length_of :carrier_data_id, :minimum => 8, :maximum => 8
-  # validates_inclusion_of :carrier_data_id, :in => %w(MC mc Mc mC), :allow_blank => true
-  
+
   validates_format_of :username,
                        :with => /\A[A-Z0-9_]*\z/i
-
   USERNAME_BLACKLIST = YAML.load_file("#{Rails.root}/config/username_blacklist.yml")
 
   validates :username, :exclusion => USERNAME_BLACKLIST
   validate :community_email_type_is_correct
+
+  # validates_inclusion_of :is_shipper_carrier.downcase, :in => %w(carrier shipper)
+  #validates_length_of :carrier_data_id, :minimum => 8, :maximum => 8, :allow_blank => true
+  #validates_format_of :carrier_data_id, :with => /\A\A[m][c]/i, :allow_blank => true, message: "Must be a 6 digit number starting with the letters 'MC'"
 
   has_attached_file :image, :styles => {
                       :medium => "288x288#",
