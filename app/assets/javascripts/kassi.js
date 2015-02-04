@@ -904,7 +904,7 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
       "person[password2]": { required: true, minlength: 4, equalTo: "#person_password1" },
       "recaptcha_response_field": {required: true, captcha: true },
       "invitation_code": {required: invitation_required, remote: "/people/check_invitation_code"},
-      "person[is_shipper_carrier]": {required: true },
+      "person[is_shipper_carrier]": {required: true }
     },
     messages: {
       "recaptcha_response_field": { captcha: captcha_message },

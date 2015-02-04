@@ -1551,7 +1551,7 @@ en:
       given_name: "First name"
       i_accept_the: "I accept the"
       is_carrier_or_shipper: "What role are you signing up for?"
-      op_authority_number: "Operating Authority Number"
+      carrier_data_id: "Operating Authority Number"
       invalid_invitation_code: "The invitation code is not valid."
       invitation_code: "Invitation code"
       not_required: ", not required"
@@ -1739,7 +1739,7 @@ en:
       profile_page: "in your profile page"
       profilemap: Mapview
       street_address: Location
-      these_fields_are_shown_in_your: "This information is visible to all %{service_name} users"
+      these_fields_are_shown_in_your: "This information is visible to all users"
       visible_to_everybody: "visible to everybody"
       visible_to_registered_users: "(visible to users that have signed in)"
       default_in_listing: "(used only as a default when creating a new listing)"

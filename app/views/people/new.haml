@@ -29,12 +29,12 @@
     -# Shipper or Carrier
     = form.label :is_shipper_carrier, t('.is_carrier_or_shipper'), :class => "btn btn-default"
     .btn-group{"data-toggle" => "buttons-radio"}
-      %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :value => "Shipper", :class => "btn btn-primary"} Shipper
-      %input{:type => "radio", :id => "is_carrier", :name => "person[is_shipper_carrier]", :value => "Carrier", :class => "btn btn-primary"} Carrier
+      %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :id => "example_0", :value => "Shipper", :class => "btn btn-primary"} Shipper
+      %input{:type => "radio", :id => "is_carrier", :name => "person[is_shipper_carrier]", :id => "example_1", :value => "Carrier", :class => "btn btn-primary"} Carrier
 
     -# Carrier Operating Authority Number
-    = form.label :op_authority_number, t('.op_authority_number')
-    = form.text_field :carrier_data_id, :class => :text_field, :title => "This is a 6 digit number beginning with 'MC'", :maxlength => "8", :minlength => "8", :placeholder => "MC"
+    = form.label :carrier_data_id, t('.carrier_data_id')
+    = form.text_field :carrier_data_id, :class => :text_field, :title => "This is a 6 digit number beginning with 'MC'", :maxlength => "8", :minlength => "8", :placeholder => "MC", :id => "carrier_data_id"
 
     -# Invite code
     - if @current_community.join_with_invite_only?
