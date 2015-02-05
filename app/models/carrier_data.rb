@@ -36,4 +36,24 @@ class CarrierData < ActiveRecord::Base
   validates_inclusion_of :id, :in => %w(MC mc Mc mC)
   
   attr_accessible :address, :auth_number, :broker, :city, :crashes, :dba_name, :driver_oos_rate, :drivers, :hazmat_oos_rate, :household_goods, :inspections, :legal_name, :passenger, :property, :rate_date, :rating, :state, :trucks, :usdot_number, :validated, :vehicle_oos_rate, :zip
+
+  CARRIER_BLACKLIST = YAML.load_file("#{Rails.root}/config/carrier_blacklist.yml")
+
+
+  def to_param
+    id
+  end
+
+  def self.find(id)
+    super(self.find_by_id(id).try(:id) || id)
+  end
+  
+  def self.carrier_blacklist
+    CARRIER_BLACKLIST
+  end
+
+  def self.carrier_valid?(carrier_data_id)
+     CarrierData.find_by_id(carrier_data_id).present? && !carrier_data_id.in?(CARRIERNAME_BLACKLIST)
+  end
+  
 end

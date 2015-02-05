@@ -171,8 +171,6 @@ class Person < ActiveRecord::Base
   validate :community_email_type_is_correct
 
   # validates_inclusion_of :is_shipper_carrier.downcase, :in => %w(carrier shipper)
-  #validates_length_of :carrier_data_id, :minimum => 8, :maximum => 8, :allow_blank => true
-  #validates_format_of :carrier_data_id, :with => /\A\A[m][c]/i, :allow_blank => true, message: "Must be a 6 digit number starting with the letters 'MC'"
 
   has_attached_file :image, :styles => {
                       :medium => "288x288#",
@@ -242,7 +240,7 @@ class Person < ActiveRecord::Base
 
   def self.username_available?(username)
      !Person.find_by_username(username).present? && !username.in?(USERNAME_BLACKLIST)
-   end
+  end
 
   # Deprecated: This is view logic (how to display name) and thus should not be in model layer
   # Consider using PersonViewUtils

@@ -1,5 +1,7 @@
 Kassi::Application.routes.draw do
 
+  get "carrier_data/check_carrier_validity"
+
   namespace :mercury do
     resources :images
   end
