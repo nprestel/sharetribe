@@ -31,6 +31,13 @@ function add_validator_methods() {
         return value.match(new RegExp("(^[A-Za-z0-9_]*$)"));
       }
     );
+    
+  $.validator.
+    addMethod( "valid_carrier",
+      function(value, element, param) {
+        return value.match(new RegExp(/^mc\d\d\d\d\d\d$/i));
+      }
+    );
 
   $.validator.
     addMethod("regex",
@@ -897,6 +904,7 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     rules: {
       "person[username]": {required: true, minlength: 3, maxlength: 20, valid_username: true, remote: "/people/check_username_availability"},
       "person[given_name]": {required: name_required, maxlength: 30},
+      "person[carrier_data_id]": {minlength: 8, maxlength: 8, valid_carrier: true},
       "person[family_name]": {required: name_required, maxlength: 30},
       "person[email]": {required: true, email: true, remote: "/people/check_email_availability_and_validity"},
       "person[terms]": "required",
