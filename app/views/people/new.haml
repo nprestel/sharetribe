@@ -25,65 +25,66 @@
     %h3=t(".signup_with_email")
 
   = form_for @person, :url => APP_CONFIG.login_domain.to_s + people_path do |form|
-
+    
     -# Shipper or Carrier
     = form.label :is_shipper_carrier, t('.is_carrier_or_shipper'), :class => "btn btn-default"
     .btn-group{"data-toggle" => "buttons-radio"}
+      %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :id => "example_0", :value => "Carrier", :class => "btn btn-primary"} Carrier
+
+      -# Carrier Operating Authority Number
+      %div{ :class => "reveal-if-active", :id => "carrier_data_id_div" }
+        = form.label :carrier_data_id, t('.carrier_data_id')
+        = form.text_field :carrier_data_id, :class => :text_field, :maxlength => "8", :minlength => "8", :placeholder => "MC", :id => "carrier_data_id"
       %input{:type => "radio", :id => "is_shipper", :name => "person[is_shipper_carrier]", :id => "example_0", :value => "Shipper", :class => "btn btn-primary"} Shipper
-      %input{:type => "radio", :id => "is_carrier", :name => "person[is_shipper_carrier]", :id => "example_1", :value => "Carrier", :class => "btn btn-primary"} Carrier
 
-    -# Carrier Operating Authority Number
-    = form.label :carrier_data_id, t('.carrier_data_id')
-    = form.text_field :carrier_data_id, :class => :text_field, :title => "This is a 6 digit number beginning with 'MC'", :maxlength => "8", :minlength => "8", :placeholder => "MC", :id => "carrier_data_id"
+      -# Invite code
+      - if @current_community.join_with_invite_only?
+        .inline-label-container
+          = label_tag :invitation_code, t('.invitation_code'), :class => "inline"
+          = link_to(t('common.what_is_this'), "#", :tabindex => "-1", :id => "help_invitation_code_link", :class => "label-info")
+        = text_field_tag "invitation_code", nil, :class => :text_field, :maxlength => "20", :value => (params[:code] || "")
+      - elsif params[:code]
+        = hidden_field_tag "invitation_code", params[:code]
 
-    -# Invite code
-    - if @current_community.join_with_invite_only?
-      .inline-label-container
-        = label_tag :invitation_code, t('.invitation_code'), :class => "inline"
-        = link_to(t('common.what_is_this'), "#", :tabindex => "-1", :id => "help_invitation_code_link", :class => "label-info")
-      = text_field_tag "invitation_code", nil, :class => :text_field, :maxlength => "20", :value => (params[:code] || "")
-    - elsif params[:code]
-      = hidden_field_tag "invitation_code", params[:code]
+      -# Honey pot: hidden field to detect spammers
+      = form.label :input_again, "You should not see this field, if CSS is working. If you see this, please send feedback!", :class => "unwanted_text_field"
+      = form.text_field :input_again, :class => "unwanted_text_field", :id => "error_registration_unwanted_email2", :autocomplete => "off"
 
-    -# Honey pot: hidden field to detect spammers
-    = form.label :input_again, "You should not see this field, if CSS is working. If you see this, please send feedback!", :class => "unwanted_text_field"
-    = form.text_field :input_again, :class => "unwanted_text_field", :id => "error_registration_unwanted_email2", :autocomplete => "off"
+      -# Email
+      = form.label :email, t('.email')
+      = form.text_field :email, :class => :text_field, :maxlength => "255"
 
-    -# Email
-    = form.label :email, t('.email')
-    = form.text_field :email, :class => :text_field, :maxlength => "255"
+      -# Name
+      - if @current_community.only_organizations
+        = form.label :organization_name, t('.organization_name')
+        = form.text_field :organization_name, :class => :text_field, :maxlength => "30"
+      - else
+        = form.label :given_name, t('.given_name')
+        = form.text_field :given_name, :class => :text_field, :maxlength => "30"
+        = form.label :family_name, t('.family_name')
+        = form.text_field :family_name, :class => :text_field, :maxlength => "30"
 
-    -# Name
-    - if @current_community.only_organizations
-      = form.label :organization_name, t('.organization_name')
-      = form.text_field :organization_name, :class => :text_field, :maxlength => "30"
-    - else
-      = form.label :given_name, t('.given_name')
-      = form.text_field :given_name, :class => :text_field, :maxlength => "30"
-      = form.label :family_name, t('.family_name')
-      = form.text_field :family_name, :class => :text_field, :maxlength => "30"
+      -# Username
+      = form.label :username, username_label
+      = form.text_field :username, :class => :text_field, :maxlength => "20", :id => "person_username1"
 
-    -# Username
-    = form.label :username, username_label
-    = form.text_field :username, :class => :text_field, :maxlength => "20", :id => "person_username1"
+      -# Password
+      = form.label :password, t('common.password')
+      = form.password_field :password, :class => :text_field, :maxlength => "255", :id => "person_password1"
+      = form.label :password2, t('.password_again')
+      = form.password_field :password2, :class => :text_field, :maxlength => "255"
 
-    -# Password
-    = form.label :password, t('common.password')
-    = form.password_field :password, :class => :text_field, :maxlength => "255", :id => "person_password1"
-    = form.label :password2, t('.password_again')
-    = form.password_field :password2, :class => :text_field, :maxlength => "255"
+      -# Terms
+      .outer-checkbox-container
+        .checkbox-container
+          - unless @skip_terms_checkbox
+            %input{:type => "checkbox", :id => "person_terms", :name => "person[terms]"}
+            = form.label :terms, t('.i_accept_the'), :class => "checkbox"
+            = link_to t(".terms"), "#", :tabindex => "-1", :id => "terms_link", :class => "form"
 
-    -# Terms
-    .outer-checkbox-container
-      .checkbox-container
-        - unless @skip_terms_checkbox
-          %input{:type => "checkbox", :id => "person_terms", :name => "person[terms]"}
-          = form.label :terms, t('.i_accept_the'), :class => "checkbox"
-          = link_to t(".terms"), "#", :tabindex => "-1", :id => "terms_link", :class => "form"
+      = form.hidden_field :consent, :value => @current_community.consent
+      = hidden_field_tag :community, @current_community.domain
 
-    = form.hidden_field :consent, :value => @current_community.consent
-    = hidden_field_tag :community, @current_community.domain
+      = button_tag t('.create_new_account')
 
-    = button_tag t('.create_new_account')
-
-= render :partial => "help_texts", :collection => ["terms", "help_invitation_code"], :as => :field
+  = render :partial => "help_texts", :collection => ["terms", "help_invitation_code"], :as => :field

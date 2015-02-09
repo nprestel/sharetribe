@@ -38,6 +38,14 @@ function add_validator_methods() {
         return value.match(new RegExp(/^mc\d\d\d\d\d\d$/i));
       }
     );
+    
+  $.validator.
+    addMethod("carrierid_required",
+      function(value, element, param) {
+        var inputString = 'Carrier';
+        return value.toLowerCase.match(inputString.toLowerCase());
+      }
+    );
 
   $.validator.
     addMethod("regex",
@@ -162,6 +170,7 @@ function add_validator_methods() {
         return Number(toNumber(value)) < numberVal($otherInput);
       }
     );
+
   $.validator.
     addMethod("number_conditional_decimals",
       function(value, element, decimalCheckbox) {
@@ -175,6 +184,7 @@ function add_validator_methods() {
         return regexp.test(value);
       }
     );
+    
 
   $.validator.addClassRules("required", {
     required: true
@@ -883,6 +893,15 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     //link.preventDefault();
     $('#help_invitation_code').lightbox_me({centered: true, zIndex: 1000000 });
   });
+  $('input[type="radio"]').click(function() {
+         if($(this).attr('name') == 'person[is_shipper_carrier]') {
+              $('#carrier_data_id_div').show();           
+         }
+
+         else {
+              $('#carrier_data_id_div').hide();   
+         }
+     });
   $('#terms_link').click(function(link) {
     link.preventDefault();
     $('#terms').lightbox_me({ centered: true, zIndex: 1000000 });
@@ -890,6 +909,7 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
   var form_id = "#new_person";
   //name_required = (name_required == 1) ? true : false
   $(form_id).validate({
+    debug: true,
     errorPlacement: function(error, element) {
       if (element.attr("name") == "person[terms]") {
         error.appendTo(element.parent().parent());
@@ -904,7 +924,16 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     rules: {
       "person[username]": {required: true, minlength: 3, maxlength: 20, valid_username: true, remote: "/people/check_username_availability"},
       "person[given_name]": {required: name_required, maxlength: 30},
-      "person[carrier_data_id]": {required: true, minlength: 8, maxlength: 8, valid_carrier: true}
+      "person[carrier_data_id]": {minlength: 8, maxlength: 8, valid_carrier: {
+                depends: function() {
+                    return $("input:radio[name='person[is_shipper_carrier]']:checked").val() == 'Carrier';
+                }
+            }, required: {
+                depends: function() {
+                    return $("input:radio[name='person[is_shipper_carrier]']:checked").val() == 'Carrier';
+                }
+            }
+        },
           //, remote: "/carrier_data/check_carrier_validity"},
       "person[family_name]": {required: name_required, maxlength: 30},
       "person[email]": {required: true, email: true, remote: "/people/check_email_availability_and_validity"},
@@ -918,6 +947,9 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     messages: {
       "recaptcha_response_field": { captcha: captcha_message },
       "person[username]": { valid_username: invalid_username_message, remote: username_in_use_message },
+      "person[carrier_data_id]": { 
+          valid_carrier: "This is a 6 digit number beginning with 'MC'", 
+          required:  "This is a required field for Carriers"},
       "person[email]": { remote: email_in_use_message },
       "invitation_code": { remote: invalid_invitation_code_message }
     },

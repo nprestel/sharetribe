@@ -273,6 +273,12 @@ Kassi::Application.routes.draw do
           get :create_facebook_based
         end
       end
+      
+      resources :carrier_data do
+        collection do
+          get :check_carrier_validity
+        end
+      end
 
       resources :people, :path => "" do
         member do
