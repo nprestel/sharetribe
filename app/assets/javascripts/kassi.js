@@ -932,9 +932,15 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
                 depends: function() {
                     return $("input:radio[name='person[is_shipper_carrier]']:checked").val() == 'Carrier';
                 }
+            }, remote: {
+              param: {
+                url: "/carrier_data/check_carrier_validity"
+              },
+              depends: function() {
+                return $("input:radio[name='person[is_shipper_carrier]']:checked").val() == 'Carrier';
+              }
             }
-        },
-          //, remote: "/carrier_data/check_carrier_validity"},
+        }, 
       "person[family_name]": {required: name_required, maxlength: 30},
       "person[email]": {required: true, email: true, remote: "/people/check_email_availability_and_validity"},
       "person[terms]": "required",
@@ -949,7 +955,8 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
       "person[username]": { valid_username: invalid_username_message, remote: username_in_use_message },
       "person[carrier_data_id]": { 
           valid_carrier: "This is a 6 digit number beginning with 'MC'", 
-          required:  "This is a required field for Carriers"},
+          required:  "This is a required field for Carriers",
+          remote:  "Waddup Dawg"},
       "person[email]": { remote: email_in_use_message },
       "invitation_code": { remote: invalid_invitation_code_message }
     },

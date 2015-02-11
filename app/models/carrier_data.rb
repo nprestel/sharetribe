@@ -33,9 +33,10 @@ class CarrierData < ActiveRecord::Base
   has_many :people, :autosave => true, :dependent => :destroy
   
   validates_length_of :id, :minimum => 8, :maximum => 8
-  validates_inclusion_of :id, :in => %w(MC mc Mc mC)
+  # validates_inclusion_of :id, :in => %w(MC mc Mc mC)
+  # validates :id, inclusion: %w(MC mc Mc mC)
   
-  attr_accessible :address, :auth_number, :broker, :city, :crashes, :dba_name, :driver_oos_rate, :drivers, :hazmat_oos_rate, :household_goods, :inspections, :legal_name, :passenger, :property, :rate_date, :rating, :state, :trucks, :usdot_number, :validated, :vehicle_oos_rate, :zip
+  attr_accessible :id, :address, :auth_number, :broker, :city, :crashes, :dba_name, :driver_oos_rate, :drivers, :hazmat_oos_rate, :household_goods, :inspections, :legal_name, :passenger, :property, :rate_date, :rating, :state, :trucks, :usdot_number, :validated, :vehicle_oos_rate, :zip
 
   CARRIER_BLACKLIST = YAML.load_file("#{Rails.root}/config/carrier_blacklist.yml")
 
@@ -53,7 +54,7 @@ class CarrierData < ActiveRecord::Base
   end
 
   def self.carrier_valid?(carrier_data_id)
-     CarrierData.find_by_id(carrier_data_id).present? && !carrier_data_id.in?(CARRIERNAME_BLACKLIST)
+     CarrierData.find_by_id(carrier_data_id).present?
   end
   
 end

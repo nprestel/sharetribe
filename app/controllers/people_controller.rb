@@ -270,6 +270,7 @@ class PeopleController < Devise::RegistrationsController
     email_availability(email, false)
   end
 
+  
   def check_invitation_code
     respond_to do |format|
       format.json { render :json => Invitation.code_usable?(params[:invitation_code], @current_community) }
