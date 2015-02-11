@@ -126,8 +126,15 @@
             - item_container = if @view_type.eql?("grid") then '.home-fluid-thumbnail-grid' else '.home-listings' end
             = pageless(@listings.total_pages, item_container, request.fullpath, t('.loading_more_content'))
       - else
-        .home-no-listings
-          - if params[:q] || params[:category] || params[:share_type] # Some filter in use
-            = t(".no_listings_with_your_search_criteria")
-          - else
-            = t(".no_listings_notification", :add_listing_link => link_to(t(".add_listing_link_text"), new_listing_path)).html_safe
+        - if logged_in? && @current_user.is_shipper_carrier.downcase == "carrier"
+          .home-no-listings
+            - if params[:q] || params[:category] || params[:share_type] # Some filter in use
+              = t(".no_listings_with_your_search_criteria")
+            - else
+              = t(".no_listings_notification", :add_listing_link => link_to(t(".add_listing_link_text"), new_listing_path)).html_safe
+        - else
+          .home-no-listings
+            - if params[:q] || params[:category] || params[:share_type] # Some filter in use
+              = t(".no_listings_with_your_search_criteria")
+            - else
+              = t(".no_listings_notification2")

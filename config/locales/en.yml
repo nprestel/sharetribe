@@ -947,6 +947,7 @@ en:
     index:
       no_listings_with_your_search_criteria: "We couldn't find any results that matched your search criteria."
       no_listings_notification: "No listings. %{add_listing_link}."
+      no_listings_notification2: "No listings"
       add_listing_link_text: "Add new listing"
       open_listing: "open listing"
       open_listings: "open listings"
@@ -1168,7 +1169,7 @@ en:
       you_have_already_given_feedback_about_this_event: "You have already given feedback about this event"
       you_are_now_member: "Welcome to %{service_name}!"
       you_are_already_member: "You are already a member of %{service_name}. Welcome back!"
-      you_must_log_in_to_create_new_listing: "You must sign in to %{service_name} to create a new listing. If you don't have an account you can %{sign_up_link}."
+      you_must_log_in_to_create_new_listing: "You must sign in to %{service_name} as a Carrier to create a new listing. If you don't have an account you can %{sign_up_link}."
       additional_email_confirmed_dashboard: "Your email is now confirmed."
       you_must_log_in_to_give_feedback: "You must sign in to give feedback"
       you_must_log_in_to_invite_new_users: "You must sign in to invite new users to %{service_name}"

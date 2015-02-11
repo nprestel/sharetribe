@@ -956,7 +956,7 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
       "person[carrier_data_id]": { 
           valid_carrier: "This is a 6 digit number beginning with 'MC'", 
           required:  "This is a required field for Carriers",
-          remote:  "Waddup Dawg"},
+          remote:  "Please enter a valid MC#"},
       "person[email]": { remote: email_in_use_message },
       "invitation_code": { remote: invalid_invitation_code_message }
     },
