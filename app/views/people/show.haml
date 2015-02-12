@@ -23,14 +23,15 @@
       .profile-action-buttons-mobile
         = render :partial => "profile_action_buttons"
 
-
-    .row
-      - if @person.is_shipper_carrier.downcase == "carrier"
-        .text_with_line_breaks
-          - if @person.carrier_data.dba_name.present?
-            = @person.carrier_data.dba_name
-          - else
-            = @person.carrier_data.legal_name
+    - if logged_in?
+      .row
+        - if @person.is_shipper_carrier.downcase == "carrier"
+          %h1
+            .text_with_line_breaks
+              - if @person.carrier_data.dba_name.present?
+                = @person.carrier_data.dba_name
+              - else
+                = @person.carrier_data.legal_name
         = @person.carrier_data.city + ", " + @person.carrier_data.state + "  " + @person.carrier_data.zip
         %br
         = 'OPERATING AUTHORITY: ' + @person.carrier_data.id
@@ -42,6 +43,9 @@
         = 'Inspections: ' + @person.carrier_data.inspections.to_s
         %br
         = 'Crashes: ' + @person.carrier_data.crashes.to_s
+    - else
+      %h1
+        = 'You must sign in to Lajek to view Carrier Information'
 
     .row
       - if @person.description && !@person.description.blank?

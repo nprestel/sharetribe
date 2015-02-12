@@ -325,12 +325,12 @@ form {
     }
 
     label {
-      display: inline-block;
-      width: auto;
-      padding: 0 0 0 lines(1);
-      margin-top: lines(0.5) - em(3);
-      margin-bottom: em(3);
-      font-weight: 600;
+        display: inline-block;
+        width: auto;
+        padding: 0px 0px 0px 2em;
+        margin-top: 1.2em;
+        margin-bottom: 0.1875em;
+        font-weight: 600;
     }
 
     label.radio {
@@ -2232,3 +2232,17 @@ figure.fluidratio {
     transform: scale(1);
   }
 }
+
+input[type="checkbox"], input[type="radio"] {
+    margin: 10px;
+}
+
+label[for=person_carrier_data_id]
+{
+  width: 100%;
+  display: block;
+  margin-top: -.5em;
+  margin-bottom: 0.1875em;
+  font-weight: 600;
+}
+
