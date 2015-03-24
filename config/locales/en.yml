@@ -975,14 +975,14 @@ en:
       filter: Filter
       this_is_private_community: "You need to sign up before you can view the content."
     invitation_form:
-      invite_your_friends: "Invite your friends to %{service_name}!"
+      invite_your_friends: "Invite others to %{service_name}!"
       invite_your_neighbors: "Invite your neighbors to %{service_name}!"
       email: "Email address(es)"
       message: "A personal message"
       send_invitation: "Send invitation"
       add_as_many_emails_as_you_want: "Add the email addresses of the people you are inviting to the field below. If you add multiple email addresses, separate them with comma."
       invitation_emails_field_placeholder: "friend1@example.com, friend2@example.com, ..."
-      invitation_message_field_placeholder: "I joined this amazing marketplace. You should too!"
+      invitation_message_field_placeholder: "Ship smart, check out BkHaul!"
       errors_in_emails: "Check that the email addresses you added are valid. If you added multiple addresses, make sure they are separated with comma."
     list_item:
       review: review
@@ -1028,7 +1028,7 @@ en:
       join_this_community: "Join marketplace"
       read_more: "Read more"
       feedback: "What would you like to tell us?"
-      default_feedback: "Did you encounter a problem? Have a suggestion? Noticed some suspicious content? Or just have something you want to discuss? Let us know! We personally answer all messages within 48 hours."
+      default_feedback: "Problem? Suggestion? Noticed some suspicious content? Or just have something you want to discuss? Let us know! We personally answer all messages within 48 hours."
       feedback_forum: "feedback forum"
       feedback_handle: Feedback
       give_feedback: "Contact us"
@@ -1680,7 +1680,7 @@ en:
       email_addresses: "Email addresses"
       new_email: "New email address"
       delete_all_memberships: "If you delete your account, you will not be able to use it any more in the following marketplaces: %{marketplaces}"
-      delete_personal_information: "If you delete your account, your personal information (name, phone number, address, email, profile picture, etc.) will be deleted permanently and can't be recovered. All the listings you have created will be removed. You won't be able to reactivate your account."
+      delete_personal_information: "If you delete your account, your personal information (name, phone number, address, email, profile picture, etc.) will be deleted permanently and can't be recovered. If you're a Carrier all the listings you have created will be removed. You won't be able to reactivate your account."
       delete_information_others_involved: "Information where other members are involved (conversations with other people, transactions you've made, reviews you've given to others, etc) is not removed when you delete your account. However, your name will no longer be displayed next to this information."
       unfinished_transactions: "Your account can't be deleted because you have ongoing transactions. Please complete all transactions before deleting your account."
       new_password: "New password"
