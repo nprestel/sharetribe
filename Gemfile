@@ -66,7 +66,7 @@ gem "devise-encryptable"
 gem "omniauth-facebook"
 gem 'spreadsheet'
 gem 'rabl'
-gem 'rake', '~> 10.1.0'
+gem 'rake', '~> 10.1.1'
 gem 'xpath'
 gem 'dynamic_form'
 gem "truncate_html"

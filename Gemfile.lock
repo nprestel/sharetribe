@@ -551,7 +551,7 @@ DEPENDENCIES
   rack-test
   rack-timeout
   rails (= 3.2.19)
-  rake (~> 10.1.0)
+  rake (~> 10.1.1)
   rb-fsevent
   recaptcha
   rest-client (>= 1.6.0)
