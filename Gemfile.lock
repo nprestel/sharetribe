@@ -372,7 +372,7 @@ GEM
       thor (>= 0.14.6, < 2.0)
     rainbow (2.0.0)
     raindrops (0.12.0)
-    rake (10.3.2)
+    rake (10.1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -551,7 +551,7 @@ DEPENDENCIES
   rack-test
   rack-timeout
   rails (= 3.2.19)
-  rake
+  rake (~> 10.1.0)
   rb-fsevent
   recaptcha
   rest-client (>= 1.6.0)
