@@ -49,7 +49,7 @@ module Kassi
     config.assets.paths << VENDOR_CSS_PATH
 
     # Define here additional Assset Pipeline Manifests to include to precompilation
-    config.assets.precompile += ['markerclusterer.js', 'communities/custom-style-*', 'ss-*', 'modernizr.min.js', 'mercury.js','jquery-1.7.js']
+    # config.assets.precompile += ['markerclusterer.js', 'communities/custom-style-*', 'ss-*', 'modernizr.min.js', 'mercury.js','jquery-1.7.js']
     config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
 
     # Read the config from the config.yml
