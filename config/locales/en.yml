@@ -559,7 +559,8 @@ en:
       cancel: "Did not happen"
   braintree_accounts:
     new:
-      add_payout_details: "Add your payout details"
+      add_payout_details: "Add details so you can receive payments"
+      for_payout_account: "Enter details for your payout account"
       first_name: "First name"
       last_name: "Last name"
       email: "Email address"

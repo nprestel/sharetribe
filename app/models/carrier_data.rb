@@ -54,7 +54,7 @@ class CarrierData < ActiveRecord::Base
   end
 
   def self.carrier_valid?(carrier_data_id)
-     CarrierData.find_by_id(carrier_data_id).present?
+     CarrierData.find_by_id(carrier_data_id).present? && !carrier_data_id.in?(CARRIER_BLACKLIST)
   end
   
 end

@@ -30,8 +30,21 @@
             .text_with_line_breaks
               - if @person.carrier_data.dba_name.present?
                 = @person.carrier_data.dba_name
+                %br
+                = @person.carrier_data.city + ", " + @person.carrier_data.state + "  " + @person.carrier_data.zip
+                %br
+                = 'OPERATING AUTHORITY: ' + @person.carrier_data.id
+                %br
+                = 'DOT#: ' + @person.carrier_data.usdot_number
+                %br
+                = 'Rating#: ' + @person.carrier_data.rating
+                %br
+                = 'Inspections: ' + @person.carrier_data.inspections.to_s
+                %br
+                = 'Crashes: ' + @person.carrier_data.crashes.to_s
               - else
                 = @person.carrier_data.legal_name
+                %br
                 = @person.carrier_data.city + ", " + @person.carrier_data.state + "  " + @person.carrier_data.zip
                 %br
                 = 'OPERATING AUTHORITY: ' + @person.carrier_data.id
